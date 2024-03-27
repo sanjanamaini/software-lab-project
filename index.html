@@ -1,27 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Management System</title>
-    <link rel="icon" href="SC.ico"> -->
-    <!-- <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="heading">
-        <h1>LOGIN</h1>
-    </div>
-   <div class="mail">
-        <span class="inp-mail">Email</span>
 
-
-   </div>
-   <script src="script.js"></script>
-   
-</body>
-</html> -->
-
-<!-- login.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,16 +6,27 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Login</h1>
+    <img class="image" src="hms2.png" alt=""> 
+    <h2 class="heading"> HOSTEL MANAGEMENT SYSTEM</h2>
+    <div id="login"><a style="text-decoration: none; color: inherit;">LOGIN</a> </div>
+
+    <!-- <h1>Login</h1> -->
     <form id="login-form">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br>
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <input type="text" id="username" class="ip" name="username"><br>
         <br>
         <label for="role">You are a:</label>
-        <input type="text" id="role" name="role"><br>
+        <select class="ip">
+            <option value="0">--- SELECT ---</option>
+            <option value="1">student</option>
+            <option value="2">warden</option>
+            <option value="3">Database administrator</option>
+          </select>
+        <br>
         <br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br>
+        <input type="password" id="password" class="ip" name="password"><br>
         <br>
         <button type="submit">Login</button>
     </form>
