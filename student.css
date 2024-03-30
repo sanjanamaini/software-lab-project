@@ -8,14 +8,16 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: antiquewhite;
 }
 .hidden {
     display: none;
 }
 header {
-    background-color: #333;
+    /* background-color: # 161515; */
     color: #fff;
     padding: 1rem;
+    
 }
 
 nav ul {
@@ -53,4 +55,30 @@ footer {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
+}
+
+.clickable {
+    flex: 1; /* Distribute equal space among items */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Adjust vertical padding */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition effect */
+    /* display:block; */
+}
+
+.clickable:hover {
+    background-color: rgb(255, 255, 255); 
+    color: black;
+}
+nav {
+    background-color: black;
+    color: white;
+    display: flex;
+}
+.submitbtn{
+    background-color: yellowgreen;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
 }

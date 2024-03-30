@@ -67,10 +67,11 @@ button:hover {
 }
 .heading{
     margin-left: 40%;
-    color:#efdfdf
+    color:#efdfdf;
+    display: flex;
 }
 .image{
-    width: 10%;
+    width: 25%;
     display: block;
   /* margin-left: auto; */
   margin-right: auto;
@@ -82,4 +83,9 @@ body{
     background-image:url("bg.png") ;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.logo{
+    background-color: #d7adad;
+    /* background: transparent; */
+
 }

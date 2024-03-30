@@ -9,16 +9,52 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="#request-room">Request Room</a></li>
-                <li><a href="#make-payment">Make Payment</a></li>
-                <li><a href="#select-room">Select Room</a></li>
-                <li><a href="#room-details">Room Details</a></li>
-            </ul>
+            <div class="clickable" id="ReqRoom">
+                REQUEST ROOM
+            </div>
+            <div class="clickable" id="payment" onclick="makePayment()">
+                MAKE PAYMENT
+            </div>
+            <div class="clickable" id="SelRoom" onclick="SelectRoom()">
+                SELECT ROOM
+            </div>
+            <div class="clickable" id="details" onclick="generateFinancialReport()">
+                ROOM DETAILS
+            </div>
+            
         </nav>
+        <br>
     </header>
     <!-- <img class="image" src="download.png" alt="">  -->
-
+    <div class="viewArea">
+        <div class="genMods" id="reqRoommmodule">
+            <div class="form">
+                <legend>REQUEST ROOM</legend>
+                <hr>
+                <br>
+                <text>Student Name: </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Student ID : </text>
+                <input type="text">
+                <br><br>
+                <text>Department : </text>
+                <input type="text">
+                <br><br>
+                <text>Current CGPA : </text>
+                <input type="text">
+                <br><br>
+                <text>Year : </text>
+                <div id="valueAdded"></div>
+                <br><br>
+                <div id="submitReq" class="submitbtn">
+                    SUBMIT
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
     <main>
         <div id="request-room">
             <h2>Request Room</h2>
