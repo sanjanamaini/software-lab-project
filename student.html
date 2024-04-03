@@ -6,23 +6,26 @@
     <title>Student view</title>
     <link rel="stylesheet" href="student.css">
 </head>
-<body>
+<body background="assets/Studbckd.jpg">
+    
     <header>
-        <nav>
-            <div class="clickable" id="ReqRoom">
+        <!-- <img class="image" src="assets/uic.png" alt="">  -->
+        <div class="navbar">
+            <img id="uiclogo" class="image" src="assets/uic.png" alt="">
+            <div class="nav-item clickable" id="ReqRoom">
                 REQUEST ROOM
             </div>
-            <div class="clickable" id="payment" onclick="makePayment()">
+            <div class="nav-item clickable" id="payment" onclick="makePayment()">
                 MAKE PAYMENT
             </div>
-            <div class="clickable" id="SelRoom" onclick="SelectRoom()">
+            <div class="nav-item clickable" id="SelRoom" onclick="SelectRoom()">
                 SELECT ROOM
             </div>
-            <div class="clickable" id="details" onclick="generateFinancialReport()">
+            <div class="nav-item clickable" id="details" onclick="generateFinancialReport()">
                 ROOM DETAILS
             </div>
-            
-        </nav>
+        </div       >
+        
         <br>
     </header>
     <!-- <img class="image" src="download.png" alt="">  -->
@@ -46,7 +49,8 @@
                 <input type="text">
                 <br><br>
                 <text>Year : </text>
-                <div id="valueAdded"></div>
+                <!-- <div id="valueAdded"></div> -->
+                <input type="text">
                 <br><br>
                 <div id="submitReq" class="submitbtn">
                     SUBMIT
@@ -55,29 +59,121 @@
         </div>
     </div>
     <br>
-    <main>
-        <div id="request-room">
-            <h2>Request Room</h2>
-            <p>Name*: <input type="text" required name="name" class="det"></p>
-            <p>Registration Number: <input type="text" requried name="registration-number" class="det"></p>
-            <p>Department: <input type="text" requried name="department" class="det"></p>
-            <p>Current CGPA: <input type="text" requried name="cgpa" class="det"></p>
-            <p>Year: <input type="text" requried name="year" class="det"></p>
+    <div class="viewArea">
+        <div class="genMods" id="makePaymentModule">
+            <div class="form">
+                <legend>MAKE PAYMENT</legend>
+                <hr>
+                <br>
+                <text>Card Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Expiry : </text>
+                <!-- <div id="itemNameSale"></div> -->
+                <input type="text">
+                <br><br>
+                <text>CVV : </text>
+                <input type="text">
+                <br><br>
+                <text>Total Price : </text>
+                <!-- <div id="valueAdded"></div> -->
+                <input type="text">
+                <br><br>
+                <div class="submitbtn" id="paymentConfirm" onclick="paymentDetails()">
+                    PAY
+                </div>
+                
+            </div>
         </div>
-
-        <section id="make-payment">
-            <h2>Make Payment</h2>
-            
-        </section>
-
-        <section id="select-room">
-            <h2>Select Room</h2>
-        </section>
-
-        <section id="room-details">
-            <h2>Room Details</h2>
-        </section>
-    </main>
-
+    </div>
+    <br>
+    <div class="viewArea">
+        <div class="genMods" id="selRoomModule">
+            <div class="form">
+                <legend>SELECT ROOM</legend>
+                <hr>
+                <br>
+                <text>SELECT TOWER : </text>
+                <select class="tower">
+                    <option value="0">--- SELECT A TOWER ---</option>
+                    <option value="1">T1</option>
+                    <option value="2">T2</option>
+                    <option value="3">T3</option>
+                    <option value="4">T4</option>
+                  </select>
+                <br>
+                <br>
+                <text>SELECT FLOOR : </text>
+                <br>
+                <!-- <div id="itemNameSale"></div> -->
+                <select class="floor">
+                    <option value="0">--- SELECT FLOOR ---</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                <br><br>
+                <text>NUMBER OF SHARING : </text>
+                <select class="floor">
+                    <option value="0">--- SELECT SHARING ---</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">4</option>
+                    <option value="4">6</option>
+                  </select>
+                <br><br>
+                <div class="submitbtn" id="roomSel" onclick="paymentDetails()">
+                    CONFIRM ROOM
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="viewArea">
+        <div class="genMods" id="roomDetailsModule">
+            <div class="form">
+                <legend>ROOM DETAILS</legend>
+                <hr>
+                <br>
+                <text>Student Name : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Registration Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Room Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Floor : </text>
+                <!-- <div id="itemNameSale"></div> -->
+                <input type="text">
+                <br><br>
+                <text>Sharing type : </text>
+                <input type="text">
+                <br><br>
+                <text>Semester : </text>
+                <!-- <div id="valueAdded"></div> -->
+                <input type="text">
+                <br><br>
+                <div class="submitbtn" id="paymentConfirm" onclick="paymentDetails()">
+                    EXIT
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <script src="student.js"></script>
 </body>
 </html>
