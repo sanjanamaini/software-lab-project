@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student view</title>
-    <link rel="stylesheet" href="student.css">
+    <link rel="stylesheet" href="css/student.css">
 </head>
 <body background="assets/Studbckd.jpg">
     
@@ -12,31 +12,55 @@
         <!-- <img class="image" src="assets/uic.png" alt="">  -->
         <div class="navbar">
             <img id="uiclogo" class="image" src="assets/uic.png" alt="">
-            <div class="nav-item clickable" id="ReqRoom">
-                REQUEST ROOM
+            <div class="nav-item clickable active" id="student" onclick="setActive(event,'studentView')">
+                STUDENT DETAILS
             </div>
-            <div class="nav-item clickable" id="payment" onclick="makePayment()">
+            <div class="nav-item clickable" id="makpayment" onclick="setActive(event,'paymentView')">
                 MAKE PAYMENT
             </div>
-            <div class="nav-item clickable" id="SelRoom" onclick="SelectRoom()">
+            <div class="nav-item clickable" id="SelRoom" onclick="setActive(event,'selectRoomView')">
                 SELECT ROOM
             </div>
-            <div class="nav-item clickable" id="details" onclick="generateFinancialReport()">
+            <div class="nav-item clickable" id="details" onclick="setActive(event,'roomDetailsView')">
                 ROOM DETAILS
             </div>
-        </div       >
+            <div class="nav-item clickable" id="allroomdetails" onclick="setActive(event,'AllroomDetailsView')">
+                ROOM DETAILS
+            </div>
+            <!-- <div class="nav-item clickable" id="availableRoom" onclick="setActive(event,'roomAvailableView')">
+                ROOMS AVAILABLE
+            </div> -->
+            <div class="nav-item clickable" id="bookingDetails" onclick="setActive(event,'bookingDetailsView')">
+                BOOKING DETAILS
+            </div>
+            <div class="nav-item clickable" id="paymentDetails" onclick="setActive(event,'collectFineView')">
+                COLLECT FINE
+            </div>
+            <div class="nav-item clickable" id="addStudent" onclick="setActive(event,'addStudentView')">
+                ADD STUDENT 
+            </div>
+            <div class="nav-item clickable" id="deletestudent" onclick="setActive(event,'DeleteUserView')">
+                DELETE STUDENT 
+            </div>
+            
+            <div class="clickable" id="logout" onclick="logoutandclearstorage()">
+                LOGOUT
+            </div>
+            
+        </div  >
         
         <br>
     </header>
-    <!-- <img class="image" src="download.png" alt="">  -->
-    <div class="viewArea">
-        <div class="genMods" id="reqRoommmodule">
+   
+    <div class="activeView xxx" id="studentView">
+        <div class="genMods" id="studDetsmodule">
             <div class="form">
-                <legend>REQUEST ROOM</legend>
+                <legend>STUDENT DETAILS</legend>
                 <hr>
                 <br>
                 <text>Student Name: </text>
-                <input type="text">
+                <input type="text" id="newUserFullName" onchange="validateName()">
+                <div id="nameInvalid" class="validationMessage"></div>
                 <br>
                 <br>
                 <text>Student ID : </text>
@@ -58,8 +82,8 @@
             </div>
         </div>
     </div>
-    <br>
-    <div class="viewArea">
+
+    <div class="inactiveView xxx" id="paymentView">
         <div class="genMods" id="makePaymentModule">
             <div class="form">
                 <legend>MAKE PAYMENT</legend>
@@ -87,8 +111,8 @@
             </div>
         </div>
     </div>
-    <br>
-    <div class="viewArea">
+
+    <div class="inactiveView xxx" id="selectRoomView">
         <div class="genMods" id="selRoomModule">
             <div class="form">
                 <legend>SELECT ROOM</legend>
@@ -136,8 +160,8 @@
             </div>
         </div>
     </div>
-    <br>
-    <div class="viewArea">
+
+    <div class="inactiveView xxx" id="roomDetailsView">
         <div class="genMods" id="roomDetailsModule">
             <div class="form">
                 <legend>ROOM DETAILS</legend>
@@ -173,7 +197,104 @@
             </div>
         </div>
     </div>
-    <br>
-    <script src="student.js"></script>
+
+    <div class="inactiveView xxx" id="AllroomDetailsView">
+        <div class="genMods" id="allroomDetailsModule">
+            <div class="form">
+                <legend>ALL ROOM BOOKING DETAILS</legend>
+                <hr>
+                <br>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="inactiveView xxx" id="bookingDetailsView">
+        <div class="genMods" id="bookingDetailsModule">
+            <div class="form">
+                <legend> BOOKING DETAILS</legend>
+                
+            </div>
+            <div id="BookingDetailsTable">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="inactiveView xxx" id="collectFineView">
+        <div class="genMods" id="collectFineModule">
+            <div class="form">
+                <legend> COLLECT FINE</legend>
+                <hr>
+                <br>
+                <text>Student Name : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Registration Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Reason : </text>
+                <!-- <div id="itemNameSale"></div> -->
+                <select name="finersn" id="finersn">
+                    <option value="1"> Damage to property</option>
+                    <option value="2"> Unauthorised stay in room</option>
+                    <option value="3"> Unauthorised equipments in the room</option>
+                </select>
+                <div class="submitbtn" id="detailsConfirm" onclick="paymentDetails()">
+                    EXIT
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="inactiveView xxx" id="addStudentView">
+        <div class="genMods" id="addStudentModule">
+            <div class="form">
+                <legend> ADD STUDENT</legend>
+                <hr>
+                <br>
+                <text>Student Name : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Registration Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                
+                <div class="submitbtn" id="addStudentConfirm" onclick="paymentDetails()">
+                    EXIT
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="inactiveView xxx" id="DeleteUserView">
+        <div class="genMods" id="deleteStudentModule">
+            <div class="form">
+                <legend> DELETE STUDENT</legend>
+                <hr>
+                <br>
+                <text>Student Name : </text>
+                <input type="text">
+                <br>
+                <br>
+                <text>Registration Number : </text>
+                <input type="text">
+                <br>
+                <br>
+                
+                <div class="submitbtn" id="addStudentConfirm" onclick="paymentDetails()">
+                    EXIT
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/student.js"></script>
 </body>
 </html>

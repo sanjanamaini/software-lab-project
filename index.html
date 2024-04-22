@@ -1,38 +1,47 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
     <div class="logo">
-        <img class="image" src="assets/uic.png" alt=""> 
+        <img class="image" id="uiclogo" src="assets/uic.png" alt="">
         <h2 class="heading"> HOSTEL MANAGEMENT SYSTEM</h2>
     </div>
+
     <!-- <h2 class="heading"> HOSTEL MANAGEMENT SYSTEM</h2> -->
     <div id="login"><a style="text-decoration: none; color: inherit;">LOGIN</a> </div>
-
+    <br><br><br>
     <!-- <h1>Login</h1> -->
     <form id="login-form">
-        <label for="username">Username:</label>
+        <label for="username">Login ID:</label>
         <i class="fa fa-user-o" aria-hidden="true"></i>
-        <input type="text" id="username" class="ip" name="username"><br>
+        <input type="text" id="username" class="ip" name="username" onchange="validateUsername()"><br>
+        <div class="validationMessage" id="usernameInvalid"></div>
         <br>
-        <label for="role">You are a:</label>
-        <select class="ip">
+        <!-- <label for="role">You are a:</label>
+        <select class="Role" id="role" onchange="validateRole()">
             <option value="0">--- SELECT ---</option>
             <option value="1">student</option>
             <option value="2">warden</option>
             <option value="3">Database administrator</option>
-          </select>
+        </select>
+        <div class="validationMessage" id="roleInvalid"></div>
         <br>
+        <br> -->
         <br>
+    
         <label for="password">Password:</label>
-        <input type="password" id="password" class="ip" name="password"><br>
+        <input type="password" id="password" class="ip" name="password" onchange="validatePassword()"><br>
+        <div class="validationMessage" id="passwordInvalid"></div>
         <br>
-        <button type="submit">Login</button>
+        <br><br>
+        <div class="submit" id="logincredsub" onclick="validateLoginCreds()">Login</div>
     </form>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

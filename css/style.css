@@ -1,0 +1,136 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d3c9c9;
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+#role{
+    margin: 0 0 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border-color: grey;
+}
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* background: opa; */
+}
+.submit {
+    background-color: #ff0000;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size:larger;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+body{
+    background-color: gray;
+   
+}
+#login{
+    background-color: black;
+    text-align: center;
+    /* margin: 20px; */
+    color: white;
+    padding: 1vw;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.ip{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.logo{
+    display: flex;
+    width: 100%;
+}
+#uiclogo{
+    /* display: flex; */
+    width:fit-content;
+    width: 450px;
+}
+.heading{
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+    /* margin-left: 40%; */
+    /* background-color:#efdfdf; */
+    display: flex;
+    font-family: Arial, sans-serif; /* or any other font family you prefer */
+  color: #333;
+  /* font-size: 24px; */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* add a subtle text shadow */
+  letter-spacing: 1px; /* add letter spacing */
+}
+.image{
+    /* width: 25%; */
+    display: block;
+  /* margin-left: auto; */
+  margin-right: auto;
+  padding: 20px;
+ 
+}
+
+.validationMessage{
+    color: red;
+}
+body{
+    /* background-color: black; */
+    background-image:url("../assets/bg.png") ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo{
+    background-color: #8a7a7ab6;
+    /* background: transparent; */
+
+}
+.submit:hover {
+    background-color: #45a049;
+  }
