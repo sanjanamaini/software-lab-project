@@ -1,4 +1,15 @@
-/* Reset some default styles */
+@font-face {
+    font-family: 'Platypi';
+    src: url('path/to/Platypi-VariableFont_wght.ttf') format('truetype');
+    font-weight: 1 999; /* Font weight range */
+    font-stretch: 1% 100%; /* Font stretch range */
+}
+
+body {
+    font-family: 'Platypi', sans-serif;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +17,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     line-height: 1.6;
     background-color: antiquewhite;
     background-attachment: fixed;
@@ -136,16 +147,18 @@ select{
 }
 
 #clglogo {
-    display: flex;
+    /* display: flex; */
     align-items: center;
 }
 
 #uiclogo {
     /* margin-right: 10px; Adjust as needed */
+    background-color:  transparent;
+    scale: 2;
 }
 
 .navbar {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     background-color: black;
     color: white;
@@ -156,8 +169,8 @@ select{
 
 .nav-item {
     height: 100%;
-    padding: 40px;
-    font-size: 20px;
+    padding: 0px 30px;
+    font-size: 15px;
 }
 
 .image {

@@ -1,10 +1,14 @@
 window.onload = function() {
-    var userType=localStorage.getItem("userType");
-    if (userType=="S") {
-        SView();
-    } else if(userType=="A"){
+    var userDetsString = localStorage.getItem("currentUserDetails");
+    var userDets = JSON.parse(userDetsString);
+    console.log(userDets);
+    if (userDets[0].registrationnum.substring(0, 2) == "AP") {
+        console.log("student view 1");
+        SView(userDets);
+        console.log("student view 2s")
+    } else if(userDets[0].registrationnum=="Admin"){
         AView();
-    } else if(userType=="W"){
+    } else if(userDets[0].registrationnum.substring(0,1)=="W"){
         WView();
     }
     hideAndUnhide();
@@ -34,12 +38,22 @@ function setActive(event, view) {
     hideAndUnhide();
 }
 
-function SView() {
+function SView(userDets) {
     removeAddStudent();
     removeDeleteStudent();
     removeCollectFine();
     removeAllRoomDetails();
+
+    document.getElementById('studentName').innerText = userDets[0].name;
+    document.getElementById('studentID').innerText = userDets[0].registrationnum;
+    document.getElementById('studentDept').innerText = userDets[0].department;
+    document.getElementById('studentCGPA').innerText = userDets[0].cgpa;
+    document.getElementById('studentYear').innerText = userDets[0].yearofstudy;
+    // document.getElementById('studentName').innerText = userDets[0].name;
+    
+
 }
+
 
 function WView() {
     removeAddStudent();
@@ -49,6 +63,10 @@ function WView() {
     removeStudentDets();
     removeSelectRoom();
     removeRoomDetails();
+    document.getElementById('studentView').classList.add("inactiveView");
+    document.getElementById('AllroomDetailsView').classList.add("activeView");
+    document.getElementById('studentView').classList.remove("activeView");
+    hideAndUnhide();
 }
 
 function AView() {
@@ -59,6 +77,10 @@ function AView() {
     removeRoomDetails();
     removeCollectFine();
     removeAllRoomDetails();
+    document.getElementById('studentView').classList.add("inactiveView");
+    document.getElementById('AllroomDetailsView').classList.add("activeView");
+    document.getElementById('studentView').classList.remove("activeView");
+    hideAndUnhide();
 }
 
 function removeStudentDets() {
@@ -115,3 +137,10 @@ function validateName() {
         return false;
     }
 }
+
+function logoutandclearstorage() {
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+

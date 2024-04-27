@@ -1,8 +1,11 @@
 const express = require("express");
 const { Pool } = require("pg");
+const cors = require('cors')
+
 
 const app = express();
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 3000;
+app.use(cors());
 
 const pool = new Pool({
 	connectionString:

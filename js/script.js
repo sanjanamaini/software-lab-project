@@ -1,38 +1,38 @@
 function isValidUsername(username) {
-    const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+	const alphanumericRegex = /^[a-zA-Z0-9]+$/;
 
-    return alphanumericRegex.test(username);
+	return alphanumericRegex.test(username);
 }
 function isValidPassword(password) {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+	const passwordRegex =
+		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
 
-    return passwordRegex.test(password);
+	return passwordRegex.test(password);
 }
 function validateUsername() {
-    var usernameInput = document.getElementById("username");
-    var validationMessage = document.getElementById("usernameInvalid");
+	var usernameInput = document.getElementById("username");
+	var validationMessage = document.getElementById("usernameInvalid");
 
-    if (isValidUsername(usernameInput.value)) {
-        validationMessage.innerText = "";
-        return true;
-    } else {
-        validationMessage.innerText = "Invalid Username";
-        return false;
-    }
+	if (isValidUsername(usernameInput.value)) {
+		validationMessage.innerText = "";
+		return true;
+	} else {
+		validationMessage.innerText = "Invalid Username";
+		return false;
+	}
 }
 
+function validatePassword() {
+	var passwordInput = document.getElementById("password");
+	var validationMessage = document.getElementById("passwordInvalid");
 
-function validatePassword(){
-    var  passwordInput = document.getElementById("password");
-    var validationMessage = document.getElementById("passwordInvalid");
-
-    if (isValidPassword(passwordInput.value)) {
-        validationMessage.innerText="";
-        return true;
-    } else {
-        validationMessage.innerText="Invalid Password";
-        return false;
-    }
+	if (passwordInput.value!="") {
+		validationMessage.innerText = "";
+		return true;
+	} else {
+		validationMessage.innerText = "Invalid Password";
+		return false;
+	}
 }
 // function validateRole(){
 //     var roleSelect=document.getElementById("role");
@@ -55,16 +55,17 @@ function validatePassword(){
 
 async function validateLoginCreds() {
 	if (validateUsername() && validatePassword()) {
-		document.getElementById("logincredsub").innerText = "Validating User...";
-        const username=document.getElementById("username").value;
-        const password=document.getElementById("password").value;
-        console.log(username,password);
-        const details=await fetchDetails(username,password);
-        if(details==0){
-            alert("Incorrect USERNAME or PASSWORD");
-            return;
-        }
-		localStorage.setItem("currentUserDetails", details);
+		document.getElementById("logincredsub").innerText =
+			"Validating User...";
+		const username = document.getElementById("username").value;
+		const password = document.getElementById("password").value;
+		console.log(username, password);
+		const details = await fetchDetails(username, password);
+		if (details == 0) {
+			alert("Incorrect USERNAME or PASSWORD");
+			return;
+		}
+		localStorage.setItem("currentUserDetails", JSON.stringify(details));
 		window.location.href = "student.html";
 	}
 }
@@ -72,7 +73,8 @@ async function validateLoginCreds() {
 // // validateLogin()
 
 const fetchDetails = async (registrationnum, password) => {
-	const response = await fetch("/api/login", {
+	console.log("fetching", registrationnum, password);
+	const response = await fetch("http://localhost:3000/api/login", {
 		method: "GET",
 		headers: {
 			registrationnum: registrationnum,
@@ -80,9 +82,9 @@ const fetchDetails = async (registrationnum, password) => {
 		},
 	});
 	const data = await response.json();
-    if (data.length==0){
-        return 0;
-    }else{
-        return data;
-    }
+	if (data.length == 0) {
+		return 0;
+	} else {
+		return data;
+	}
 };
