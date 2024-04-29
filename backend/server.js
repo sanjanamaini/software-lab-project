@@ -42,7 +42,6 @@ app.get("/api/all/room/details", async (req, res) => {
         // console.log(registrationnum, password);
         const query = {
             text: "SELECT * FROM rooms  "
-            
         };
         // console.log(query);
         const { rows } = await pool.query(query);
@@ -115,29 +114,44 @@ app.post("/api/add/student", async (req, res) => {
     try {
         const { name, registrationnum, department, semester, cgpa, yearofstudy } = req.headers;
         const query = {
-            text: "INSERT INTO students ( name, registrationnum, department, semester, cgpa, yearofstudy)  VALUES ($1, $2, $3,$4,$5,$6)",
+            text: "INSERT INTO students (name, registrationnum, department, semester, cgpa, yearofstudy) VALUES ($1, $2, $3, $4, $5, $6)",
             values: [name, registrationnum, department, semester, cgpa, yearofstudy],
         };
+        console.log("query captured");
         await pool.query(query);
-    }catch (error) {
-		console.error("Error executing query:", error);
-		res.status(500).json({ error: "Error executing query" });
-	}
+        console.log("query performed");
+        res.status(200).json({ message: "Student added successfully" });
+    } catch (error) {
+        console.error("Error executing query:", error);
+        res.status(500).json({ error: "Error executing query" });
+    }
 });
+
 
 app.post("/api/del/student", async (req, res) => {
     try {
         const { registrationnum } = req.headers;
         const query = {
-            text: "DELETE FROM students WHERE registrationnum= $1 ",
-            values: [ registrationnum],
+            text: "DELETE FROM students WHERE registrationnum = $1 RETURNING *",
+            values: [registrationnum],
         };
-        await pool.query(query);
-    }catch (error) {
-		console.error("Error executing query:", error);
-		res.status(500).json({ error: "Error executing query" });
-	}
+
+        const result = await pool.query(query);
+
+        if (result.rowCount === 0) {
+            // No rows affected, student not found
+            res.status(404).json({ error: "Student not found" });
+        } else {
+            // Student deleted successfully
+            res.status(200).json({ message: "Student deleted successfully" });
+        }
+
+    } catch (error) {
+        console.error("Error executing query:", error);
+        res.status(500).json({ error: "Error executing query" });
+    }
 });
+
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);

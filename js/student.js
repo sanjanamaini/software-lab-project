@@ -272,10 +272,9 @@ async function addStudent() {
     const sem = document.getElementById("addSem").value;
     const cgpa = document.getElementById("addCgpa").value;
     const year = document.getElementById("addYear").value;
-    // console.log(id, amount, reason);
-    document.getElementById('addStudentConfirm').innerText="Adding Student...";
     console.log(name,id,dept,sem,cgpa,year);
-    
+    document.getElementById('addStudentConfirm').innerText="Adding Student...";
+
     const addstud = await updateAddStud(
         name,
         id,
@@ -284,49 +283,75 @@ async function addStudent() {
         cgpa,
         year
     );
+    console.log("working");
     // document.getElementById('addStudentConfirm').innerText="Added Successfully!";
 
 }
-const updateAddStud = async (name,id,dept,sem,cgpa,year) => {
+const updateAddStud = async (name,registrationnum,department,semester,cgpa,yearofstudy) => {
 	// console.log(registrationnum, tower, floor, room);
 	const response = await fetch("http://localhost:3000/api/add/student", {
 		method: "POST",
         headers: {
             name:name,
-			registrationnum: id,
-			department: dept,
-            semester: sem,
+			registrationnum: registrationnum,
+			department: department,
+            semester: semester,
             cgpa: cgpa,
-            yearofstudy:year,
+            yearofstudy:yearofstudy,
 		},
     });
+    console.log("out of 1");
+    document.getElementById('addStudentConfirm').innerText = "Added Successfully";
+    console.log("out of 2");
     const res = await response.json();
-    document.getElementById('addStudentConfirm').innerText="Added Successfully!";
+    console.log("out of 3");
 
 };
 
 
 //delete student
 async function delStudent() {
+    document.getElementById('delStudentConfirm').innerText="Deleting Student...";
+
     const id = document.getElementById("delregno").value;
     console.log(id);
 
-    document.getElementById('addStudentConfirm').innerText="Deleting Student...";
+    // document.getElementById('delStudentConfirm').innerText="Deleting Student...";
 
     const del = await updateDelStud(
 		id
     );
     
 }
-const updateDelStud = async (id) => {
-	// console.log(registrationnum, tower, floor, room);
-	const response = await fetch("http://localhost:3000/api/del/student", {
-		method: "POST",
-		headers: {
-			registrationnum: id,
-		},
+// const updateDelStud = async (registrationnum) => {
+// 	// console.log(registrationnum, tower, floor, room);
+// 	const response = await fetch("http://localhost:3000/api/del/student", {
+// 		method: "POST",
+// 		headers: {
+// 			registrationnum: registrationnum,
+// 		},
+//     });
+    
+//     const res = await response.json();
+//     document.getElementById('delStudentConfirm').innerText = 'Deleted Successfully!';
+// };
+const updateDelStud = async (registrationnum) => {
+    const response = await fetch("http://localhost:3000/api/del/student", {
+        method: "POST",
+        headers: {
+            registrationnum: registrationnum,
+        },
     });
-    const res = await response.json();
-    document.getElementById('delStudentConfirm').innerText = 'Deleted Successfully!';
+
+    if (response.status === 404) {
+        // Student not found
+        alert("Student not found");
+    } else if (response.ok) {
+        // Student deleted successfully
+        document.getElementById('delStudentConfirm').innerText = 'Deleted Successfully!';
+    } else {
+        // Other errors
+        alert("An error occurred while deleting the student");
+    }
 };
 

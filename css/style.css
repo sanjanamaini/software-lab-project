@@ -109,12 +109,12 @@ button:hover {
 }
 
 .heading {
-    width: 100%;
+    width: 60%;
     height: auto;
     padding: 20px;
     margin: 0;
     text-align: center;
-    font-size: 40px;
+    font-size: 90px;
     align-self: baseline;
     color: #ffffff;
     font-weight: bold;
