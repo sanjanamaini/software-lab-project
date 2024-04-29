@@ -4,9 +4,13 @@
     font-weight: 1 999; /* Font weight range */
     font-stretch: 1% 100%; /* Font stretch range */
 }
+html{
+    width: 100%;
+}
 
 body {
     font-family: 'Platypi', sans-serif;
+    width: 100%;
 }
 
 
@@ -72,6 +76,8 @@ nav ul li a {
 }
 
 .clickable {
+    font-size: 24px;
+    padding: 44.7px 0;
     /* height: 100%; */
     flex: 1;
     /* Distribute equal space among items */
@@ -87,6 +93,20 @@ nav ul li a {
 .clickable:hover {
     background-color: rgb(255, 255, 255); 
     color: black;
+}
+
+.booking{
+    background-color: #000000;
+    color: aliceblue;
+    border-radius: 20px;
+    opacity: 85%;
+    padding: 5%;
+    margin: 5%;
+}
+#btable{
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
 }
 
 .submitbtn{
@@ -120,7 +140,7 @@ legend{
     text-align: center;
     display: block;
 }
-input[type="text"], button {
+input[type="text"],input[type="number"], button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -152,28 +172,35 @@ select{
 }
 
 #uiclogo {
+    width: 420px;
+    height: 142px;
     /* margin-right: 10px; Adjust as needed */
     background-color:  transparent;
-    scale: 2;
+    /* scale: 0.2; */
+    
 }
 
 .navbar {
-    /* display: flex; */
-    align-items: center;
+    background-color: #000000;
+    /* align-items: center;
     background-color: black;
-    color: white;
+    color: white; */
     display: flex;
-    /* justify-content: space-between; */
-    /* padding: 10px; */
+    width: 100%;
 }
 
 .nav-item {
     height: 100%;
     padding: 0px 30px;
     font-size: 15px;
+    width: fit-content;
 }
 
 .image {
     /* max-height: 50px; */
     vertical-align: middle;
+}
+
+.logout{
+    background-color: red;
 }

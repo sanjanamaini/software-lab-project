@@ -98,8 +98,8 @@ button:hover {
 
 .logo {
     display: flex;
-    /* background-color: #8a7a7ab6; */
-    background-color: #a02027;
+    background-color: #8a7a7ab6;
+    /* background-color: #a02027; */
     opacity: 80%;
 }
 
@@ -110,11 +110,11 @@ button:hover {
 
 .heading {
     width: 100%;
+    height: auto;
     padding: 20px;
     margin: 0;
     text-align: center;
     font-size: 40px;
-    vertical-align: middle;
     align-self: baseline;
     color: #ffffff;
     font-weight: bold;

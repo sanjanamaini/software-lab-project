@@ -11,39 +11,30 @@
     <header>
         <!-- <img class="image" src="assets/uic.png" alt="">  -->
         <div class="navbar">
-            <img id="uiclogo" class="image" src="assets/uic.png" alt="">
-            <div class="nav-item clickable active" id="student" onclick="setActive(event,'studentView')">
+            <img id="uiclogo" class="image nav-item" src="assets/uic.png" alt="">
+            <div class=" clickable active" id="student" onclick="setActive(event,'studentView')">
                 STUDENT DETAILS
             </div>
-            <div class="nav-item clickable" id="makpayment" onclick="setActive(event,'paymentView')">
-                MAKE PAYMENT
-            </div>
-            <div class="nav-item clickable" id="SelRoom" onclick="setActive(event,'selectRoomView')">
+            <div class=" clickable" id="SelRoom" onclick="setActive(event,'selectRoomView')">
                 SELECT ROOM
             </div>
-            <div class="nav-item clickable" id="details" onclick="setActive(event,'roomDetailsView')">
+            <div class=" clickable" id="allroomdetails" onclick="setActive(event,'AllroomDetailsView')">
                 ROOM DETAILS
             </div>
-            <div class="nav-item clickable" id="allroomdetails" onclick="setActive(event,'AllroomDetailsView')">
-                ROOM DETAILS
-            </div>
-            <!-- <div class="nav-item clickable" id="availableRoom" onclick="setActive(event,'roomAvailableView')">
-                ROOMS AVAILABLE
-            </div> -->
-            <div class="nav-item clickable" id="bookingDetails" onclick="setActive(event,'bookingDetailsView')">
+            <div class=" clickable" id="bookingDetails" onclick="setActive(event,'bookingDetailsView')">
                 BOOKING DETAILS
             </div>
-            <div class="nav-item clickable" id="paymentDetails" onclick="setActive(event,'collectFineView')">
+            <div class=" clickable" id="paymentDetails" onclick="setActive(event,'collectFineView')">
                 COLLECT FINE
             </div>
-            <div class="nav-item clickable" id="addStudent" onclick="setActive(event,'addStudentView')">
+            <div class=" clickable" id="addStudent" onclick="setActive(event,'addStudentView')">
                 ADD STUDENT 
             </div>
-            <div class="nav-item clickable" id="deletestudent" onclick="setActive(event,'DeleteUserView')">
+            <div class=" clickable" id="deletestudent" onclick="setActive(event,'DeleteUserView')">
                 DELETE STUDENT 
             </div>
             
-            <div class="clickable" id="logout" onclick="logoutandclearstorage()">
+            <div class="clickable logout" id="logout" onclick="logoutandclearstorage()">
                 LOGOUT
             </div>
             
@@ -123,7 +114,7 @@
                 <hr>
                 <br>
                 <text>SELECT TOWER : </text>
-                <select class="tower">
+                <select class="tower" id="setTower">
                     <option value="0">--- SELECT A TOWER ---</option>
                     <option value="1">T1</option>
                     <option value="2">T2</option>
@@ -135,7 +126,7 @@
                 <text>SELECT FLOOR : </text>
                 <br>
                 <!-- <div id="itemNameSale"></div> -->
-                <select class="floor">
+                <select class="floor" id="setFloor">
                     <option value="0">--- SELECT FLOOR ---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -148,16 +139,22 @@
                     <option value="9">9</option>
                   </select>
                 <br><br>
-                <text>NUMBER OF SHARING : </text>
-                <select class="floor">
-                    <option value="0">--- SELECT SHARING ---</option>
+
+                
+                <text>ROOM NUMBER: </text>
+                <select class="roonno" id="setRoom">
+                    <option value="0">--- SELECT ROOM NO ---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
-                    <option value="3">4</option>
-                    <option value="4">6</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                   </select>
                 <br><br>
-                <div class="submitbtn" id="roomSel" onclick="paymentDetails()">
+                <div class="submitbtn" id="roomSel" onclick="createRoomSelection()">
                     CONFIRM ROOM
                 </div>
                 
@@ -165,7 +162,7 @@
         </div>
     </div>
 
-    <div class="inactiveView xxx" id="roomDetailsView">
+    <!-- <div class="inactiveView xxx" id="roomDetailsView">
         <div class="genMods" id="roomDetailsModule">
             <div class="form">
                 <legend>ROOM DETAILS</legend>
@@ -179,28 +176,29 @@
                 <input type="text">
                 <br>
                 <br>
-                <text>Room Number : </text>
+                <!-- add tower -->
+                <!-- <text>Room Number : </text>
                 <input type="text">
                 <br>
                 <br>
                 <text>Floor : </text>
                 <!-- <div id="itemNameSale"></div> -->
-                <input type="text">
+                <!-- <input type="text">
                 <br><br>
                 <text>Sharing type : </text>
                 <input type="text">
-                <br><br>
-                <text>Semester : </text>
+                <br><br> -->
+                <!-- <text>Semester : </text>
                 <!-- <div id="valueAdded"></div> -->
-                <input type="text">
+                <!-- <input type="text">
                 <br><br>
-                <div class="submitbtn" id="paymentConfirm" onclick="paymentDetails()">
-                    EXIT
-                </div>
+                <div class="submitbtn" id="paymentConfirm" onclick="paymentDetails()"> --> -->
+                    <!-- CLOSE --> -->
+                <!-- </div>
                 
             </div>
         </div>
-    </div>
+    </div>  -->
 
     <div class="inactiveView xxx" id="AllroomDetailsView">
         <div class="genMods" id="allroomDetailsModule">
@@ -208,7 +206,25 @@
                 <legend>ALL ROOM BOOKING DETAILS</legend>
                 <hr>
                 <br>
-                
+                <div id="fetchAllRooms" class="submitbtn" onclick="fetchAllRooms()">
+                    UPDATE
+                </div>
+            </div>
+            <div class="booking">
+                <table id="btable">
+                    <thead>
+                        <tr>
+                            <th>Room Number</th>
+                            <th>Floor</th>
+                            <!-- <th>Description</th> -->
+                            <th>Tower</th>
+                            <th>Occupied</th>
+                            <th>Booked By</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingData">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -217,6 +233,24 @@
         <div class="genMods" id="bookingDetailsModule">
             <div class="form">
                 <legend> BOOKING DETAILS</legend>
+                <hr>
+                <br>
+                <text>Room Number : </text>
+                <!-- <input type="text" id="newUserFullName" onchange="validateName()"> -->
+                <div id="RoomNo" class="bookingDets"></div>
+                <br>
+                <br>
+                <text>Floor : </text>
+                <div id="FloorNo" class="bookingDets"></div>
+                <!-- <input type="text"> -->
+                <br><br>
+                <text>Tower  : </text>
+                <div id="TowerNo" class="bookingDets"></div>
+                <!-- <input type="text"> -->
+                <br><br>
+                <div id="submitReq" class="submitbtn" onclick="fetchRoomSelection()">
+                    UPDATE
+                </div>
                 
             </div>
             <div id="BookingDetailsTable">
@@ -231,23 +265,29 @@
                 <legend> COLLECT FINE</legend>
                 <hr>
                 <br>
-                <text>Student Name : </text>
+                <!-- <text>Student Name : </text>
                 <input type="text">
                 <br>
-                <br>
+                <br> -->
                 <text>Registration Number : </text>
-                <input type="text">
+                <input type="text" id="fineRegNo">
+                <br>
+                <br>
+                <text>Amount : </text>
+                <input type="number" id="fineAmt">
                 <br>
                 <br>
                 <text>Reason : </text>
                 <!-- <div id="itemNameSale"></div> -->
                 <select name="finersn" id="finersn">
-                    <option value="1"> Damage to property</option>
-                    <option value="2"> Unauthorised stay in room</option>
-                    <option value="3"> Unauthorised equipments in the room</option>
+                    <option value=""> -- SELECT --</option>
+                    <option value="Damage to property"> Damage to property</option>
+                    <option value=" Unauthorised stay in room"> Unauthorised stay in room</option>
+                    <option value="Unauthorised equipments in the room"> Unauthorised equipments in the room</option>
                 </select>
-                <div class="submitbtn" id="detailsConfirm" onclick="paymentDetails()">
-                    EXIT
+                <br><br>
+                <div class="submitbtn" id="detailsConfirm" onclick="collectFine()">
+                    SEND
                 </div>
                 
             </div>
@@ -261,16 +301,31 @@
                 <hr>
                 <br>
                 <text>Student Name : </text>
-                <input type="text">
+                <input type="text" id="addStudName">
                 <br>
                 <br>
                 <text>Registration Number : </text>
-                <input type="text">
+                <input type="text" id="addregno">
                 <br>
                 <br>
+                <text>Department : </text>
+                <input type="text" id="addDept">
+                <br><br>
+                <text>Semester : </text>
+                <input type="text" id="addSem">
+                <br><br>
+                <text>CGPA : </text>
+                <input type="text" id="addCgpa">
+                <br>
+                <br>
+                <text>Year of Study : </text>
+                <input type="text" id="addYear">
+                <br><br>
+
+            
                 
-                <div class="submitbtn" id="addStudentConfirm" onclick="paymentDetails()">
-                    EXIT
+                <div class="submitbtn" id="addStudentConfirm" onclick="addStudent()">
+                    ADD STUDENT
                 </div>
                 
             </div>
@@ -283,17 +338,17 @@
                 <legend> DELETE STUDENT</legend>
                 <hr>
                 <br>
-                <text>Student Name : </text>
+                <!-- <text>Student Name : </text>
                 <input type="text">
                 <br>
-                <br>
+                <br> -->
                 <text>Registration Number : </text>
-                <input type="text">
+                <input type="text" id="delregno">
                 <br>
                 <br>
                 
-                <div class="submitbtn" id="addStudentConfirm" onclick="paymentDetails()">
-                    EXIT
+                <div class="submitbtn" id="delStudentConfirm" onclick="delStudent()">
+                    DELETE STUDENT
                 </div>
                 
             </div>
