@@ -110,22 +110,51 @@ app.post("/api/fine", async (req, res) => {
 	}
 });
 
+// app.post("/api/add/student", async (req, res) => {
+//     try {
+//         const { name, registrationnum,password, department, semester, cgpa, yearofstudy } = req.headers;
+//         const query = {
+//             text: "INSERT INTO students (name, registrationnum,password, department, semester, cgpa, yearofstudy) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+//             values: [name, registrationnum,password, department, semester, cgpa, yearofstudy],
+//         };
+//         console.log("query captured");
+//         await pool.query(query);
+//         console.log("query performed");
+//         res.status(200).json({ message: "Student added successfully" });
+//     } catch (error) {
+//         console.error("Error executing query:", error);
+//         res.status(500).json({ error: "Error executing query" });
+//     }
+// });
 app.post("/api/add/student", async (req, res) => {
     try {
-        const { name, registrationnum, department, semester, cgpa, yearofstudy } = req.headers;
-        const query = {
-            text: "INSERT INTO students (name, registrationnum, department, semester, cgpa, yearofstudy) VALUES ($1, $2, $3, $4, $5, $6)",
-            values: [name, registrationnum, department, semester, cgpa, yearofstudy],
+        const { name, registrationnum, password, department, semester, cgpa, yearofstudy } = req.headers;
+
+        // Check if a record already exists for the given registration number
+        const checkQuery = {
+            text: "SELECT * FROM students WHERE registrationnum = $1",
+            values: [registrationnum],
         };
-        console.log("query captured");
-        await pool.query(query);
-        console.log("query performed");
+        const { rows } = await pool.query(checkQuery);
+
+        if (rows.length > 0) {
+            return res.status(400).json({ error: "Student with this registration number already exists" });
+        }
+
+        // Insert a new record if no record exists for the given registration number
+        const insertQuery = {
+            text: "INSERT INTO students (name, registrationnum, password, department, semester, cgpa, yearofstudy) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+            values: [name, registrationnum, password, department, semester, cgpa, yearofstudy],
+        };
+        await pool.query(insertQuery);
+
         res.status(200).json({ message: "Student added successfully" });
     } catch (error) {
         console.error("Error executing query:", error);
         res.status(500).json({ error: "Error executing query" });
     }
 });
+
 
 
 app.post("/api/del/student", async (req, res) => {

@@ -268,16 +268,18 @@ const updateFine = async (id, amount, reason) => {
 async function addStudent() {
     const name = document.getElementById("addStudName").value;
     const id = document.getElementById("addregno").value;
+    const password = document.getElementById("addpwd").value;
     const dept = document.getElementById("addDept").value;
     const sem = document.getElementById("addSem").value;
     const cgpa = document.getElementById("addCgpa").value;
     const year = document.getElementById("addYear").value;
-    console.log(name,id,dept,sem,cgpa,year);
+    // console.log(name,id,dept,sem,cgpa,year);
     document.getElementById('addStudentConfirm').innerText="Adding Student...";
 
     const addstud = await updateAddStud(
         name,
         id,
+        password,
 		dept,
         sem,
         cgpa,
@@ -287,25 +289,52 @@ async function addStudent() {
     // document.getElementById('addStudentConfirm').innerText="Added Successfully!";
 
 }
-const updateAddStud = async (name,registrationnum,department,semester,cgpa,yearofstudy) => {
-	// console.log(registrationnum, tower, floor, room);
-	const response = await fetch("http://localhost:3000/api/add/student", {
-		method: "POST",
+// const updateAddStud = async (name,registrationnum,password,department,semester,cgpa,yearofstudy) => {
+// 	// console.log(registrationnum, tower, floor, room);
+// 	const response = await fetch("http://localhost:3000/api/add/student", {
+// 		method: "POST",
+//         headers: {
+//             name:name,
+//             registrationnum: registrationnum,
+//             password:password,
+// 			department: department,
+//             semester: semester,
+//             cgpa: cgpa,
+//             yearofstudy:yearofstudy,
+// 		},
+//     });
+//     console.log("out of 1");
+//     document.getElementById('addStudentConfirm').innerText = "Added Successfully";
+//     console.log("out of 2");
+//     const res = await response.json();
+//     console.log("out of 3");
+
+// };
+
+const updateAddStud = async (name, registrationnum, password, department, semester, cgpa, yearofstudy) => {
+    const response = await fetch("http://localhost:3000/api/add/student", {
+        method: "POST",
         headers: {
-            name:name,
-			registrationnum: registrationnum,
-			department: department,
+            name: name,
+            registrationnum: registrationnum,
+            password: password,
+            department: department,
             semester: semester,
             cgpa: cgpa,
-            yearofstudy:yearofstudy,
-		},
+            yearofstudy: yearofstudy,
+        },
     });
-    console.log("out of 1");
-    document.getElementById('addStudentConfirm').innerText = "Added Successfully";
-    console.log("out of 2");
-    const res = await response.json();
-    console.log("out of 3");
 
+    if (response.status === 400) {
+        document.getElementById('addStudentConfirm').innerText = "Student with this registration number already exists";
+        return;
+    }
+
+    if (response.ok) {
+        document.getElementById('addStudentConfirm').innerText = "Added Successfully";
+    } else {
+        document.getElementById('addStudentConfirm').innerText = "Failed to add student";
+    }
 };
 
 
